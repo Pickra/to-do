@@ -1,23 +1,69 @@
 <!doctype html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Mocha Spec Runner</title>
-    <link rel="stylesheet" href="lib/mocha/mocha.css">
-</head>
-<body>
-    <div id="mocha"></div>
-    <script src="lib/mocha/mocha.js"></script>
-    <script>mocha.setup('bdd')</script>
-    <!-- assertion framework -->
-    <script src="lib/chai.js"></script>
-    <script>var expect = chai.expect</script>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Mocha Spec Runner</title>
+        <link rel="stylesheet" href="lib/mocha/mocha.css">
+        <script src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
+    </head>
+    <body>
+        <div id="mocha"></div>
+        <script src="lib/mocha/mocha.js"></script>
+        <script>mocha.setup('bdd')</script>
+        <!-- assertion framework -->
+        <script src="lib/chai.js"></script>
+        <script>var expect = chai.expect</script>
 
-    <!-- include source files here... -->
+        <div class="container">
 
-    <!-- include spec files here... -->
-    <script src="spec/test.js"></script>
+            <div class="row">
 
-    <script>mocha.run()</script>
-</body>
+                <div class="col-md-4 sidebar">
+                    <button type="button" class="btn btn-default new">Your Notes <span class="glyphicon glyphicon-flash">
+                    </button>
+                </div>
+
+                    <div class="col-md-5 main">
+                        <!-- Post form -->
+
+                    <form class="form-horizontal form" role="form">
+                      <!-- title -->
+
+                      <div class="form-group">
+                        <label for="title" class="col-md-1 control-label">Title</label>
+                        <div class="col-lg-10">
+                          <input type="input" class="form-control" id="title" placeholder="Name">
+                        </div>
+                      </div>
+        
+                      <!-- content  -->
+                      <div class="form-group">
+                        <label for="content" class="col-lg-3 control-label">Content</label>
+                        <div class="col-lg-10">
+                          <textarea id="content" class="form-control" placeholder="So... tell me what u want what u really really want!!"></textarea>
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+
+                    <div class="col-md-3 actions">
+                        <button type="submit" class="btn btn-default btn-block edit">Edit</button>
+                        <button type="submit" class="btn btn-default btn-block save">Save</button>
+                        <button type="submit" class="btn btn-default btn-block delete">Delete</button>
+                    </div>
+                </div>
+        </div>
+
+
+
+        <!-- include source files here... -->
+        <script src="../app/scripts/main.js"></script>
+        
+        <!-- include spec files here... -->
+        <script src="../test/spec/test.js"></script>
+        <script src="../app/bower_components/jquery/jquery.min.js"></script>
+
+        <script>mocha.run()</script>
+    </body>
 </html>
