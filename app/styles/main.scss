@@ -4,19 +4,20 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    background-image: url('../images/dragon.jpg');
+    background-repeat: no-repeat;
 }
 
-
-.container {
-    background-color: plum;
-}
 /*columns*/
 
-/*.row {
-    margin:-700px 0 0 400px;
-}*/
+.container {
+    margin: 190px 0 0;
+}
+
+.dragon {
+    
+}
+
 .sidebar, .main, .actions {
     vertical-align: top;
     display: inline-block;
@@ -24,22 +25,29 @@ body {
 }
 
 .sidebar {
-    background-color: #EBFEFE;
+    background-color: rgba(46, 8, 8, 0.3);
 }
 
 .main {
-    background-color: #CDFFFC;
+    background-color: rgba(100, 11, 50, 0.5);
 }
 
 .actions {
-    background-color: #EBFEFE;
+    background-color: rgba(46, 8, 8, 0.6);
+}
+
+/* forms */
+
+.form-control {
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 
 /*buttons*/
 
 .btn-default {
-  background-color: #D3FDFD;
+  background-color: rgba(46, 8, 8, 0.3);
+  color: rgba(230, 6, 6, 0.9)
 } 
 
 .new {
