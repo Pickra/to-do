@@ -24,11 +24,12 @@ notesArray.fetch({
 	success: function(array){
 		// putn each new obj "note, which i havnt made yet" into the array
 		array.each(function(note){
+			// refeshes data on parse srvr from usr??
+			putInSideBar(note);
 
-			// were the array goes, sidebar
 		})
 	}
-})
+});
 
 
 
@@ -36,7 +37,7 @@ notesArray.fetch({
 u know if it workt.
 im gona make a function inside of a jquery method assignment*/
 
-$('.save').click(function({
+$('.save').click(function(){
 	var newNote = noteConstructor();
 /* then "set" the new instance into parse.
 the 1st "s is the property name bein set to parse, the 2nd is where
@@ -50,14 +51,14 @@ it's getting that value from. in this case, from a dom element*/
 /* ????????   the above function has "this" {} inside, which is 
 also a function that puts the stuff on parse or verifies the 
 stuff is on parse or both?????*/
-	// function
+		putInSideBar(result);
 	
 	}, 
 		error: function(result, error){
 			alert("No dice hombre" + error.descripton)
 		}
 
-})
+});
 
 
 /* function to put the note in the sidebar... on parse srvr??*/
