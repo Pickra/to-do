@@ -10,13 +10,6 @@ body {
 
 /*columns*/
 
-.container {
-    margin: 190px 0 0;
-}
-
-.dragon {
-    
-}
 
 .sidebar, .main, .actions {
     vertical-align: top;
@@ -57,6 +50,15 @@ body {
 
 .save {
     margin: 5% 0 0 0;    
+}
+
+/* other */
+.container {
+    margin: 260px 0 0 80px;
+}
+
+.footer {
+    margin: 273px auto;
 }
 
 /*   nav   */

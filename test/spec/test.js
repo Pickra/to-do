@@ -19,7 +19,7 @@
  
       setTimeout((function(){
  
-        var query = new Parse.Query(NoteClass);
+        var query = new Parse.Query(noteConstructor);
         query.equalTo("title", randomTitle);
         query.find({
           success: function(results) {
