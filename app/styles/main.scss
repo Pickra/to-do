@@ -23,6 +23,7 @@ body {
 
 .main {
     background-color: rgba(100, 11, 50, 0.5);
+    position: relative;
 }
 
 .actions {
@@ -61,11 +62,13 @@ body {
     margin: 273px auto;
 }
 
-/*   nav   */
+/*   stuff is hapnin   */
 
-.nav {
-    margin-top: 15px;
+.hidden {
+    opacity: 0;
 }
 
-
+.visible {
+    visibility: visible;
+}
 /* trash  */

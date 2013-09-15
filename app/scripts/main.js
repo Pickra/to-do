@@ -16,9 +16,9 @@ notesArray.fetch({
 	}
 });
 
-
-$('.save').click(function(){
 	var newNote = new noteConstructor();
+///////////////////////////////////////////
+$('.save').click(function(){
 	newNote.set('title', $('#title').val());
 	newNote.set('content', $('#content').val());
 
@@ -28,6 +28,21 @@ $('.save').click(function(){
 	}, 
 		error: function(result, error){
 			alert("No dice hombre" + error.descripton);
+		}
+	});
+});
+//////////////////////////////////////////
+$('.edit').click(function(){
+	var newNote = this
+	newNote.set('title', $('#title').val());
+	newNote.set('content', $('#content').val());
+
+	newNote.save(null, {
+		success: function(result){
+		putInSideBar(result);	
+	}, 
+		error: function(result, error){
+			alert("Nope" + error.descripton);
 		}
 	});
 });
@@ -53,7 +68,12 @@ function makeItSoNumberOne(note){
 
 
 
+$(document).ready(function(){
 
+	$('.new').click(function(){
+		$('.form').removeClass('hidden');
+	})
+});
 
 
 

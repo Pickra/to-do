@@ -4,7 +4,7 @@
   describe('The to-do form', function(){
     this.timeout(15000);
  
-    it('should save a new note, said note, should be returned from Parse', function(done){
+    it('should save a new note to the Parse server, and return it. To the Local?', function(done){
       var result;
  
       // $('.form') is refern to the .form class
@@ -37,6 +37,8 @@
  
       }), 2000)
     }); // end it()
- 
+ 	it('should edit an existing note on the Parse server and return it (to the local?)', function(done){
+
+    })
   })
 })();
