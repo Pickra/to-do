@@ -22,6 +22,8 @@ $('.save').click(function(){
 	newNote.set('title', $('#title').val());
 	newNote.set('content', $('#content').val());
 
+	$('.form').addClass('hidden');
+
 	newNote.save(null, {
 		success: function(result){
 		putInSideBar(result);	
@@ -31,31 +33,40 @@ $('.save').click(function(){
 		}
 	});
 });
-//////////////////////////////////////////
-$('.edit').click(function(){
-	var newNote = this
-	newNote.set('title', $('#title').val());
-	newNote.set('content', $('#content').val());
+// ////////////////////////////////////////
 
-	newNote.save(null, {
-		success: function(result){
-		putInSideBar(result);	
-	}, 
-		error: function(result, error){
-			alert("Nope" + error.descripton);
-		}
-	});
-});
+// $('.on').click(function(moveto){
+// 	moveto	
+// 	})
+
+
+
+//////////////////////////////////////////
+// $('.edit').click(function(){
+// 	var newNote = this
+// 	newNote.set('title', $('#title').val());
+// 	newNote.set('content', $('#content').val());
+
+// 	newNote.save(null, {
+// 		success: function(result){
+// 		putInSideBar(result);	
+// 	}, 
+// 		error: function(result, error){
+// 			alert("Nope" + error.descripton);
+// 		}
+// 	});
+// });
 
 // functions 
 
 function putInSideBar (note){
-	var li = $('<li>'+note.get('title')+'</li>');
+	var li = $('<li class= "on">'+note.get('title')+'</li>');
 
 	$('.notes').append(li);
 
 	li.click(function(){
 	makeItSoNumberOne(note);
+	$('.form').removeClass('hidden')
 	});
 };
 
@@ -72,11 +83,14 @@ $(document).ready(function(){
 
 	$('.new').click(function(){
 		$('.form').removeClass('hidden');
-	})
+	});
+
 });
 
 
 
+/*  i don't have an array, unless u count the parse server. 
+i need 1 to move stuff from sidebar to display column*/
 
 
 

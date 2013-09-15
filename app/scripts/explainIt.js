@@ -83,8 +83,9 @@ which is "rendering" what hapnd in the function... on the parse srvr?*/
 
 /* "render" function, call it - makeItSoNumberOne*/
 function makeItSoNumberOne(note){
-/* lookn in the DOM for the element(in this case, #title) and putn
-it as the property on the parse srvr. ditto for 2nd element*/
+/* lookn in the DOM for the element(in this case, #title) and puts in 
+the value/property from the parse srvr. ditto for 2nd element
+no. this explanation is wrong!!!!!!!!*/
 	$('#title').val(note.get('title'));
 	$('#content').val(note.get('content'));
 };

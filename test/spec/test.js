@@ -2,9 +2,9 @@
 'use strict';
 (function () {
   describe('The to-do form', function(){
-    this.timeout(15000);
+    this.timeout(5000);
  
-    it('should save a new note to the Parse server, and return it. To the Local?', function(done){
+    it('should save a new note to the Parse server, and return it (to the local?)', function(done){
       var result;
  
       // $('.form') is refern to the .form class
@@ -37,7 +37,16 @@
  
       }), 2000)
     }); // end it()
- 	it('should edit an existing note on the Parse server and return it (to the local?)', function(done){
+
+
+ 	it('should be able to edit an existing note on the Parse server and return it (to the local?)', function(done){
+ 		// var form = $('form')
+ 		// var title = 'kgr1mTm2zk'
+ 		// form.find('#title').val(title)
+ 		// form.find('#content').val      maybe not???
+
+
+ 		expect(.get('title')).to.equal('kgr1mTm2zk');
 
     })
   })

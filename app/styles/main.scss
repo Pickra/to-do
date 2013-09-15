@@ -11,7 +11,7 @@ body {
 /*columns*/
 
 
-.sidebar, .main, .actions {
+.sidebar, .main, .display {
     vertical-align: top;
     display: inline-block;
     min-height: 300px;
@@ -26,7 +26,7 @@ body {
     position: relative;
 }
 
-.actions {
+.display {
     background-color: rgba(46, 8, 8, 0.6);
 }
 
@@ -51,6 +51,11 @@ body {
 
 .save {
     margin: 5% 0 0 0;    
+}
+
+.action {
+    display: inline-block;
+    width: 30%;
 }
 
 /* other */
