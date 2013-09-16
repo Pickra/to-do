@@ -17,8 +17,8 @@ notesArray.fetch({
 });
 
 	var newNote = new noteConstructor();
-///////////////////////////////////////////
-$('.save').click(function(){
+/////////////////////////////////////////// save button
+$('.saved-tasks').click(function(){
 	newNote.set('title', $('#title').val());
 	newNote.set('content', $('#content').val());
 
@@ -34,39 +34,14 @@ $('.save').click(function(){
 	});
 });
 // ////////////////////////////////////////
-
-// $('.on').click(function(moveto){
-// 	moveto	
-// 	})
-
-
-
-//////////////////////////////////////////
-// $('.edit').click(function(){
-// 	var newNote = this
-// 	newNote.set('title', $('#title').val());
-// 	newNote.set('content', $('#content').val());
-
-// 	newNote.save(null, {
-// 		success: function(result){
-// 		putInSideBar(result);	
-// 	}, 
-// 		error: function(result, error){
-// 			alert("Nope" + error.descripton);
-// 		}
-// 	});
-// });
-
-// functions 
-
 function putInSideBar (note){
-	var li = $('<li class= "on">'+note.get('title')+'</li>');
+	var li = $('<li>'+note.get('title')+'</li>');
 
 	$('.notes').append(li);
 
 	li.click(function(){
-	makeItSoNumberOne(note);
-	$('.form').removeClass('hidden')
+		putInDisplay(note);
+	
 	});
 };
 
@@ -76,7 +51,52 @@ function makeItSoNumberOne(note){
 	$('#content').val(note.get('content'));
 };
 
+function putInDisplay(noteKinda){
+	$('.output-wrap h1').text(noteKinda.get('title'));
+	$('.output-wrap p').text(noteKinda.get('content'));
 
+	
+	var edit = $("<a href='#'><div class='edit'>" + 'Edit' + "</div></a>");
+	var kill = $("<a href='#'><div class='delete'>" + 'Delete' + "</div></a>");
+							// // want to say, if the edit and delete buttons are already there, don't put them in again 
+							// var theyreThere = (edit, kill)
+
+
+							// if (theyreThere = false){
+							// $('.output-wrap').append(edit, kill);
+
+							// } else {
+							// 	return(null)
+							// }    ------------------ why doesnt this work??????
+	$('.output-wrap').append(edit, kill);
+
+	$(edit).click(function(){
+		$('.form').removeClass('hidden')
+		$('#title').val(noteKinda.get('title'));
+		$('#content').val(noteKinda.get('content'));
+
+		var editSave = $("<a href='#'><div class='editSave'>" + 'editSave' + "</div></a>");
+		$('.output-wrap').append(editSave);
+		$('.editSave').click(function(){
+		
+		console.log(noteKinda.get('title'))
+		
+		noteKinda.set('title', $('#title').val());
+		noteKinda.set('content', $('#content').val());
+			
+			$('.form').addClass('hidden');
+
+			noteKinda.save(null, {
+				success: function(result){
+				makeItSoNumberOne(result);	
+			}, 
+				error: function(result, error){
+					alert("No dice hombre" + error.descripton);
+				}
+			});
+		});
+	});
+};
 
 
 $(document).ready(function(){
