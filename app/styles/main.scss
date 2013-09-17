@@ -6,6 +6,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 body {
     background-image: url('../images/dragon.jpg');
     background-repeat: no-repeat;
+    color: red;
 }
 
 /*columns*/
@@ -34,6 +35,7 @@ body {
 
 .form-control {
     background-color: rgba(0, 0, 0, 0.3);
+    color: red;
 }
 
 
@@ -43,6 +45,10 @@ body {
   background-color: rgba(46, 8, 8, 0.3);
   color: rgba(230, 6, 6, 0.9)
 } 
+
+.btn {
+    margin: 10px;
+}
 
 .new {
   margin: 5% 0 0 25%;

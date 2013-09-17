@@ -56,21 +56,21 @@ function putInDisplay(noteKinda){
 	$('.output-wrap p').text(noteKinda.get('content'));
 
 	
-	var edit = $('<a href="#" class="edit btn-default' + noteKinda.id + '">-Edit-</a>');
-	var kill = $('<a href="#" class="delete btn-default' + noteKinda.id + '">*Delete*</a>');
+	var edit = $('<div class="edit btn btn-default new' + noteKinda.id + '">-Edit-</div>');
+	var kill = $('<div class="delete btn btn-default new' + noteKinda.id + '">*Delete*</div>');
 							
-							// // want to say, if the edit and delete buttons are already there, don't put them in again 
-							// var theyreThere = {edit, kill}
-
-
+							// want to say, if the edit and delete buttons are already there, don't put them in again 
+							// var theyreThere = {edit: true, kill: true};
 							// if (theyreThere = false){
-							// $('.output-wrap').append(theyreThere);
+							// -OR-
+							// // if ((edit = false) && (kill = false)){
+							// $('.output-wrap').append(/*edit, kill*/theyreThere);
 
-							// } else {
+							// } else if ((edit = true) && (kill = true)) {
 							// 	return(null)
-							// }    ------------------ why doesnt this work??????
+							// };   /* ------------------ why doesnt this work??????*/
 
-	$('.output-wrap').append(edit, kill);
+	$('.output-wrap').append(edit, kill); /*------------------ this worx in place of the overly indented above*/
 
 	$(edit).click(function(){
 		$('.form').removeClass('hidden')
