@@ -56,18 +56,20 @@ function putInDisplay(noteKinda){
 	$('.output-wrap p').text(noteKinda.get('content'));
 
 	
-	var edit = $("<a href='#'><div class='edit'>" + 'Edit' + "</div></a>");
-	var kill = $("<a href='#'><div class='delete'>" + 'Delete' + "</div></a>");
+	var edit = $('<a href="#" class="edit btn-default' + noteKinda.id + '">-Edit-</a>');
+	var kill = $('<a href="#" class="delete btn-default' + noteKinda.id + '">*Delete*</a>');
+							
 							// // want to say, if the edit and delete buttons are already there, don't put them in again 
-							// var theyreThere = (edit, kill)
+							// var theyreThere = {edit, kill}
 
 
 							// if (theyreThere = false){
-							// $('.output-wrap').append(edit, kill);
+							// $('.output-wrap').append(theyreThere);
 
 							// } else {
 							// 	return(null)
 							// }    ------------------ why doesnt this work??????
+
 	$('.output-wrap').append(edit, kill);
 
 	$(edit).click(function(){
@@ -79,23 +81,43 @@ function putInDisplay(noteKinda){
 		$('.output-wrap').append(editSave);
 		$('.editSave').click(function(){
 		
-		console.log(noteKinda.get('title'))
+		// console.log(noteKinda.get('title'))
 		
 		noteKinda.set('title', $('#title').val());
 		noteKinda.set('content', $('#content').val());
 			
-			$('.form').addClass('hidden');
+		$('.form').addClass('hidden');
 
-			noteKinda.save(null, {
-				success: function(result){
-				makeItSoNumberOne(result);	
+		noteKinda.save(null, {
+			success: function(result){
+			makeItSoNumberOne(result);	
 			}, 
-				error: function(result, error){
-					alert("No dice hombre" + error.descripton);
-				}
-			});
+			error: function(result, error){
+				alert("No dice hombre" + error.descripton);
+			}
+		});
 		});
 	});
+
+
+
+
+	$(kill).click(function(){
+	  	$('.form').addClass('hidden');
+	  	$('.output-wrap').addClass('hidden');
+		noteKinda.destroy({
+		  success: function(noteKinda) {
+
+		    // The object was deleted from the Parse Cloud.
+		  },
+		  error: function(noteKinda, error) {
+		    // The delete failed.
+		    // error is a Parse.Error with an error code and description.
+		  }
+		});
+	});
+
+
 };
 
 
