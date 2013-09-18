@@ -1,30 +1,31 @@
 Parse.initialize("mnBJxPoO5anLT4b5gtR4oA3dKs0fUdSnCw1TYr6o", "e00VUWvFjONPw4egMhgglRZgpQspAmR8QW7feaZH");
 
-var noteConstructor = Parse.Object.extend("ToDo");
+var noteConstructor = Parse.Object.extend("ToDo"); 					/*---- makes a constructor, noteConstructor, which is like a constructor w/additional properties inherited from the Parse Class ToDo  ------------*/
 
-var objectArray = Parse.Collection.extend({
-	model: noteConstructor
+var objectArray = Parse.Collection.extend({							/*---------- makes a constructor array, objectArray, which is an object with array like properties(cuz its an array inside an obj), that makes other arrays(like a constructor), again w/properties inherited from Parse ------------*/
+	model: noteConstructor											/*-----  thought i got this while we talkin about this in class 2day, i wrote a bunch of notes, askt alota questions; but now that im tired and lookn @ my notes, feel confused -------*/
 });
 
-var notesArray = new objectArray()
+var notesArray = new objectArray()  								/*------  a new obj array ------*/
 
-notesArray.fetch({
-	success: function(array){
-		array.each(function(note){
-			putInSideBar(note);
+notesArray.fetch({													/*------ fetches data, that has been updated on Parse -----*/
+	success: function(array){   
+		array.each(function(note){    								/*------  cycles thru the objs in the array, loox for Each obj in the array and... ------*/
+			putInSideBar(note);										/*---------   calls this function, which is defined below   -------*/
 		})
 	}
 });
 
-	var newNote = new noteConstructor();
+	var newNote = new noteConstructor();							/*----- makn a new obj --------*/
+
 /////////////////////////////////////////// save button
-$('.saved-tasks').click(function(){
-	newNote.set('title', $('#title').val());
-	newNote.set('content', $('#content').val());
+$('.saved-tasks').click(function(){ 								/*-------- this is a click event that, when you click the saved-tasks class(button) ------*/
+	newNote.set('title', $('#title').val());  						/* setting/putting the value(from the input that had the #title) onto parse in the title property ----------*/
+	newNote.set('content', $('#content').val());  					/*----  ditto -----*/
 
-	$('.form').addClass('hidden');
+	$('.form').addClass('hidden');									/*--- adding the hidden class(which is just negative opacity) to the form---------*/
 
-	newNote.save(null, {
+	newNote.save(null, {											/*---------  saves the new obj on Parse ----------*/
 		success: function(result){
 		putInSideBar(result);	
 	}, 
@@ -34,63 +35,50 @@ $('.saved-tasks').click(function(){
 	});
 });
 // ////////////////////////////////////////
+
 function putInSideBar (note){
-	var li = $('<li>'+note.get('title')+'</li>');
+	var li = $('<li>'+note.get('title')+'</li>');					/*------ creates an li(called li), passes the arg(?)gets the data (in the title property) from Parse ---------*/
 
-	$('.notes').append(li);
+	$('.notes').append(li);											/*---- put the li(append it) in the notes class, which is a ul in the column that has the sidebar class -----*/
 
-	li.click(function(){
-		putInDisplay(note);
-	
+	li.click(function(){											/*----  when u click an li.... ------*/
+		putInDisplay(note);											/*----  this function is called -----*/
 	});
 };
 
 
 function makeItSoNumberOne(note){
-	$('#title').val(note.get('title'));
-	$('#content').val(note.get('content'));
+	$('#title').val(note.get('title'));  							/*---  gets the value from Parse's property and puts it in the #title????? this seems wrong -----*/
+	$('#content').val(note.get('content'));  						/*--- ditto ----*/
 };
 
-function putInDisplay(noteKinda){
-	$('.output-wrap h1').text(noteKinda.get('title'));
-	$('.output-wrap p').text(noteKinda.get('content'));
-
 	
-	var edit = $('<div class="edit btn btn-default new' + noteKinda.id + '">-Edit-</div>');
-	var kill = $('<div class="delete btn btn-default new' + noteKinda.id + '">*Delete*</div>');
-							
-							// want to say, if the edit and delete buttons are already there, don't put them in again 
-							// var theyreThere = {edit: true, kill: true};
-							// if (theyreThere = false){
-							// -OR-
-							// // if ((edit = false) && (kill = false)){
-							// $('.output-wrap').append(/*edit, kill*/theyreThere);
 
-							// } else if ((edit = true) && (kill = true)) {
-							// 	return(null)
-							// };   /* ------------------ why doesnt this work??????*/
+function putInDisplay(noteKinda){
+	$('.output-wrap').html('')  									/*---- clear everything that's in this class -----*/
+	var edit = $('<div class="edit btn btn-default new' + noteKinda.id + '">-Edit-</div>');  		/*---- make a button, get/assign the parse id (that Parse assigned to it when it is created?) to this div -----*/
+	var kill = $('<div class="delete btn btn-default new' + noteKinda.id + '">*Delete*</div>'); 	/*---- ditto -----*/
+	var h1 = $('<h1>' + noteKinda.get('title') + '</h1>');  	/*---- makes a h1 and puts the property value from the Parse title property into it -----*/
+	var p = $('<p>' + noteKinda.get('content') + '</p>'); 		/*---- ditto -----*/
 
-	$('.output-wrap').append(edit, kill); /*------------------ this worx in place of the overly indented above*/
+	$('.output-wrap').append(h1, p, edit, kill); 				/*---- append these above 4 creations to this class -----*/
 
-	$(edit).click(function(){
-		$('.form').removeClass('hidden')
-		$('#title').val(noteKinda.get('title'));
-		$('#content').val(noteKinda.get('content'));
+	$(edit).click(function(){									/*---- click event for the edit(var)button -----*/
+		$('.form').removeClass('hidden')						/*---- the same opacity thing from above -----*/
+		$('#title').val(noteKinda.get('title'));				/*---- get the property value from Parse and stick it in the #title(which is the .title input field) -----*/
+		$('#content').val(noteKinda.get('content')); 			/*---- yup -----*/
 
-		var editSave = $("<a href='#'><div class='editSave'>" + 'editSave' + "</div></a>");
-		$('.output-wrap').append(editSave);
-		$('.editSave').click(function(){
+		var editSave = $("<a href='#'><div class='editSave'>" + 'editSave' + "</div></a>");	/*---- makes yet another button.... -----*/
+		$('.output-wrap').append(editSave);						/*---- appends it to this class -----*/
 		
-		// console.log(noteKinda.get('title'))
-		
-		noteKinda.set('title', $('#title').val());
-		noteKinda.set('content', $('#content').val());
-			
-		$('.form').addClass('hidden');
+		$('.editSave').click(function(){						/*---- here's it's click event -----*/
+		noteKinda.set('title', $('#title').val());				/*---- more of the same as above -----*/
+		noteKinda.set('content', $('#content').val());			/*---- ditto -----*/
+		$('.form').addClass('hidden');							/*---- yup tup -----*/
 
-		noteKinda.save(null, {
+		noteKinda.save(null, {									/*---- save it... -----*/
 			success: function(result){
-			makeItSoNumberOne(result);	
+			makeItSoNumberOne(result);							/*---- (to parse?)  ----*/
 			}, 
 			error: function(result, error){
 				alert("No dice hombre" + error.descripton);
@@ -99,52 +87,23 @@ function putInDisplay(noteKinda){
 		});
 	});
 
-
-
-
-	$(kill).click(function(){
-	  	$('.form').addClass('hidden');
-	  	$('.output-wrap').addClass('hidden');
-		noteKinda.destroy({
+	$(kill).click(function(){									/*----  click event ----*/
+	  	$('.output-wrap').addClass('hidden');					/*----  opacity yada ----*/
+		noteKinda.destroy({										/*----  delete the info ----*/
 		  success: function(noteKinda) {
-
-		    // The object was deleted from the Parse Cloud.
+		    													// The object was deleted from the Parse Cloud.
 		  },
 		  error: function(noteKinda, error) {
-		    // The delete failed.
-		    // error is a Parse.Error with an error code and description.
+															    // The delete failed.
+															    // error is a Parse.Error with an error code and description.
 		  }
 		});
 	});
-
-
 };
 
-
 $(document).ready(function(){
-
-	$('.new').click(function(){
+	$('.new').click(function(){									/*---- dono why this is in the doc ready/global ----*/
 		$('.form').removeClass('hidden');
 	});
 
 });
-
-
-
-/*  i don't have an array, unless u count the parse server. 
-i need 1 to move stuff from sidebar to display column*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
