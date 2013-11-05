@@ -8,6 +8,8 @@ var objectArray = Parse.Collection.extend({							/*---------- makes a construct
 
 var notesArray = new objectArray()  								/*------  a new obj array ------*/
 
+var newNote = new noteConstructor();							/*----- makn a new obj --------*/
+
 notesArray.fetch({													/*------ fetches data, that has been updated on Parse -----*/
 	success: function(array){   
 		array.each(function(note){    								/*------  cycles thru the objs in the array, loox for Each obj in the array and... ------*/
@@ -16,18 +18,25 @@ notesArray.fetch({													/*------ fetches data, that has been updated on P
 	}
 });
 
-	var newNote = new noteConstructor();							/*----- makn a new obj --------*/
 
 /////////////////////////////////////////// save button
 $('.saved-tasks').click(function(){ 								/*-------- this is a click event that, when you click the saved-tasks class(button) ------*/
-	newNote.set('title', $('#title').val());  						/* setting/putting the value(from the input that had the #title) onto parse in the title property ----------*/
+	newNote.set('title', $('#title').val());  						/* setting/putting the value(from the input that had the #title) onto parse in the title property on the parse server ----------*/
 	newNote.set('content', $('#content').val());  					/*----  ditto -----*/
 
 	$('.form').addClass('hidden');									/*--- adding the hidden class(which is just negative opacity) to the form---------*/
 
 	newNote.save(null, {											/*---------  saves the new obj on Parse ----------*/
 		success: function(result){
-		putInSideBar(result);	
+		notesArray.fetch({													/*------ fetches data, that has been updated on Parse -----*/
+			success: function(array){   
+				// clear sidebar
+				array.each(function(note){    								/*------  cycles thru the objs in the array, loox for Each obj in the array and... ------*/
+					putInSideBar(note);										/*---------   calls this function, which is defined below   -------*/
+				})
+			}
+		});
+	
 	}, 
 		error: function(result, error){
 			alert("No dice hombre" + error.descripton);
