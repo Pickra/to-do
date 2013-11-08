@@ -29,7 +29,7 @@ function fetchFromParse(){
 			})
 		}
 	})
-}
+};
 
 /////////////////////////////////////////// save button
 $('.saved-tasks').click(function(){ 								/*-------- this is a click event that, when you click the saved-tasks class(button) ------*/
@@ -131,4 +131,5 @@ $(document).ready(function(){
 		$('.form').removeClass('hidden');
 	});
 
+	fetchFromParse();
 });
