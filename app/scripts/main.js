@@ -1,4 +1,4 @@
-			// PARSE OBJECTS //
+			// PARSE FUNCTIONS //
 
 Parse.initialize("mnBJxPoO5anLT4b5gtR4oA3dKs0fUdSnCw1TYr6o", "e00VUWvFjONPw4egMhgglRZgpQspAmR8QW7feaZH");
 
@@ -8,40 +8,48 @@ var objectArray = Parse.Collection.extend({							/*---------- makes a construct
 	model: noteConstructor											/*-----  thought i got this while we talkin about this in class 2day, i wrote a bunch of notes, askt alota questions; but now that im tired and lookn @ my notes, feel confused -------*/
 });
 
-			// END PARSE OBJS //
+			// END PARSE FUNCTIONS //
 
 
 
 			// PARSE VARIABLES //
 
-var notesArray = new objectArray()  								/*------  a new obj array ------*/
+var notesArray = new objectArray()  								/*------  a new local obj array ------*/
 
 var newNote = new noteConstructor();							/*----- makn a new obj --------*/
 			// END PARSE VARIABLES
 
 
-function fetchFromParse(){
-	notesArray.fetch({													/*------ fetches data, that has been updated on Parse, to the app -----*/
-		success: function(array){   
-			// clear sidebar
-			array.each(function(note){    								/*------  cycles thru the objs in the array, loox for Each obj in the array and... ------*/
-				putInSideBar(note);										/*---------   calls this function, which is defined below   -------*/
-			})
-		}
-	})
+function fetchAndOrDisplay(){
+	if (notesArray.length === 0){
+		notesArray.fetch({													/*------ fetches data, that has been updated on Parse, to the app -----*/
+			success: function(array){   
+				array.each(function(note){    								/*------  cycles thru the objs in the array, loox for Each obj in the array and... ------*/
+					putInSideBar(note);										/*---------   calls this function, which is defined below   -------*/
+				})
+			}
+		})
+	
+	} else {
+		$('.notes').html('');
+		notesArray.each(function(note){ 								
+			putInSideBar(note);									
+		})
+	}
 };
 
 function saveButton(){
 	$('.saved-tasks').click(function(){ 								/*-------- this is a click event that, when you click the saved-tasks class(button) ------*/
 		newNote.set('title', $('#title').val());  						/* it's like making an {}( var whatever = {}), set is putting the value from #title into a property key called title, inside the Model/Parse Object newNote*/
 		newNote.set('content', $('#content').val());  					/*----  ditto -----*/
-		console.log(newNote);
 
 		$('.form').addClass('hidden');									/*--- adding the hidden class(which is just negative opacity) to the form---------*/
-
+ 
 		newNote.save(null, {											/*---------  saves the new obj on Parse ----------*/
 			success: function(result){	
-			fetchFromParse(result);										
+			notesArray.add(result);
+			fetchAndOrDisplay();
+			// console.log(newNote);
 		}, 
 			error: function(result, error){
 				alert("No dice hombre" + error.descripton);
@@ -51,7 +59,7 @@ function saveButton(){
 }
 
 function putInSideBar (note){
-	var li = $('<li>'+note.get('title')+'</li>');					/*------ creates an li(called li), passes the arg(?)gets the data (in the title property) from Parse ---------*/
+	var li = $('<li>'+ note.get('title')+'</li>');					/*------ creates an li(called li), passes the arg(?)gets the data (in the title property) from Parse ---------*/
 
 	$('.notes').append(li);											/*---- put the li(append it) in the notes class, which is a ul in the column that has the sidebar class -----*/
 
@@ -69,7 +77,7 @@ function getValue(note){
 	
 
 function putInDisplay(noteKinda){
-	// $('.output-wrap').html('')  									/*---- clear everything that's in this class -----*/
+	$('.output-wrap').html('')  									/*---- clear everything that's in this class -----*/
 
 	var edit = $('<div class="edit btn btn-default new' + noteKinda.id + '">-Edit-</div>');  		/*---- make a button, get/assign the parse id (that Parse assigned to it when it is created?) to this div -----*/
 	var kill = $('<div class="delete btn btn-default new' + noteKinda.id + '">*Delete*</div>'); 	/*---- ditto -----*/
@@ -117,6 +125,7 @@ function putInDisplay(noteKinda){
 															    // error is a Parse.Error with an error code and description.
 		  }
 		});
+
 	});
 };
 
@@ -132,6 +141,6 @@ $(document).ready(function(){
 		$('.form').removeClass('hidden');
 	});
 
-	fetchFromParse();
+	fetchAndOrDisplay();
 	saveButton();
 });

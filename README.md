@@ -12,17 +12,21 @@ This is my first attempt at a to-do app. I'm also using [Parse](https://www.pars
 1. pressing the `make a new note` button removes the .hidden from .form
 	- so now the 2 .form-groups in .main are visible
 
-2. SAVE BUTTON FUNCTION -  pressing the `save` button in .main is putting the value from `#title` into a property key called `title`, inside the Model/Parse Object `newNote`
+2. saveButton() -  pressing the `save` button in .main is putting the value from `#title` into a property key called `title`, inside the Model/Parse Object `newNote`
 		
 		it's like making an {} 
 		var whatever = {}
 		
-	- the .form gets hidden
-	- saves the new objs on Parse by putting them in an array/collection
-	- then forEachs over the array and calls the putInSideBar()
-	- and the end result it fetch() from parse to the app
+	- the .form gets hidden in .main
+	- saves the newNote (obj) locally by putting it into notesArray (array/collection)
+	- then runs fetchAndOrDisplay()
+	
+3. fetchAndOrDisplay()
+	- if there's nothin in the notesArray, then it fetches the models from Parse, forEachs over the array and calls the putInSideBar()
+	- if there is stuff in the notesArray, then it clears out .notes, forEachs over the array and calls the putInSideBar()
 
-3. putInSideBar()
+
+4. putInSideBar() - 
 
 
 
@@ -36,6 +40,7 @@ This is my first attempt at a to-do app. I'm also using [Parse](https://www.pars
 
 #### HIDE THE SAVE BUTTON UNTIL IT'S NEEDED
 - make a new note
-- save an edit
+###### make only 1 save button
+- worlks with edit too
 
 #### i wana see the `notes` upon first loading the app
