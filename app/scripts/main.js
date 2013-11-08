@@ -1,3 +1,5 @@
+			// PARSE OBJECTS //
+
 Parse.initialize("mnBJxPoO5anLT4b5gtR4oA3dKs0fUdSnCw1TYr6o", "e00VUWvFjONPw4egMhgglRZgpQspAmR8QW7feaZH");
 
 var noteConstructor = Parse.Object.extend("ToDo"); 					/*---- makes a constructor, noteConstructor, which is like a constructor w/additional properties inherited from the Parse Class ToDo  ------------*/
@@ -17,7 +19,7 @@ notesArray.fetch({													/*------ fetches data, that has been updated on P
 		})
 	}
 });
-
+			// END PARSE OBJS //
 
 /////////////////////////////////////////// save button
 $('.saved-tasks').click(function(){ 								/*-------- this is a click event that, when you click the saved-tasks class(button) ------*/
@@ -36,7 +38,6 @@ $('.saved-tasks').click(function(){ 								/*-------- this is a click event tha
 				})
 			}
 		});
-	
 	}, 
 		error: function(result, error){
 			alert("No dice hombre" + error.descripton);
@@ -56,8 +57,8 @@ function putInSideBar (note){
 };
 
 
-function makeItSoNumberOne(note){
-	$('#title').val(note.get('title'));  							/*---  gets the value from Parse's property and puts it in the #title????? this seems wrong -----*/
+function getValueFromParse(note){
+	$('#title').val(note.get('title'));  							/*---  gets the value from Parse's property and puts it in the #title*/
 	$('#content').val(note.get('content'));  						/*--- ditto ----*/
 };
 
@@ -87,7 +88,7 @@ function putInDisplay(noteKinda){
 
 		noteKinda.save(null, {									/*---- save it... -----*/
 			success: function(result){
-			makeItSoNumberOne(result);							/*---- (to parse?)  ----*/
+			getValueFromParse(result);							/*---- (to parse?)  ----*/
 			}, 
 			error: function(result, error){
 				alert("No dice hombre" + error.descripton);
