@@ -8,9 +8,19 @@ var objectArray = Parse.Collection.extend({							/*---------- makes a construct
 	model: noteConstructor											/*-----  thought i got this while we talkin about this in class 2day, i wrote a bunch of notes, askt alota questions; but now that im tired and lookn @ my notes, feel confused -------*/
 });
 
+			// END PARSE OBJS //
+
+
+
+			// PARSE VARIABLES //
+
 var notesArray = new objectArray()  								/*------  a new obj array ------*/
 
 var newNote = new noteConstructor();							/*----- makn a new obj --------*/
+			// END PARSE VARIABLES
+
+
+
 
 notesArray.fetch({													/*------ fetches data, that has been updated on Parse -----*/
 	success: function(array){   
@@ -19,7 +29,6 @@ notesArray.fetch({													/*------ fetches data, that has been updated on P
 		})
 	}
 });
-			// END PARSE OBJS //
 
 /////////////////////////////////////////// save button
 $('.saved-tasks').click(function(){ 								/*-------- this is a click event that, when you click the saved-tasks class(button) ------*/
@@ -103,8 +112,8 @@ function putInDisplay(noteKinda){
 		  success: function(noteKinda) {
 		    													// The object was deleted from the Parse Cloud.
 		  },
-		  error: function(noteKinda, error) {
 															    // The delete failed.
+		  error: function(noteKinda, error) {
 															    // error is a Parse.Error with an error code and description.
 		  }
 		});
