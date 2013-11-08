@@ -31,23 +31,24 @@ function fetchFromParse(){
 	})
 };
 
-/////////////////////////////////////////// save button
-$('.saved-tasks').click(function(){ 								/*-------- this is a click event that, when you click the saved-tasks class(button) ------*/
-	newNote.set('title', $('#title').val());  						/* it's like making an {}( var whatever = {}), set is putting the value from #title into a property key called title, inside the Model/Parse Object newNote*/
-	newNote.set('content', $('#content').val());  					/*----  ditto -----*/
+function saveButton(){
+	$('.saved-tasks').click(function(){ 								/*-------- this is a click event that, when you click the saved-tasks class(button) ------*/
+		newNote.set('title', $('#title').val());  						/* it's like making an {}( var whatever = {}), set is putting the value from #title into a property key called title, inside the Model/Parse Object newNote*/
+		newNote.set('content', $('#content').val());  					/*----  ditto -----*/
+		console.log(newNote);
 
-	$('.form').addClass('hidden');									/*--- adding the hidden class(which is just negative opacity) to the form---------*/
+		$('.form').addClass('hidden');									/*--- adding the hidden class(which is just negative opacity) to the form---------*/
 
-	newNote.save(null, {											/*---------  saves the new obj on Parse ----------*/
-		success: function(result){	
-		fetchFromParse(result);										
-	}, 
-		error: function(result, error){
-			alert("No dice hombre" + error.descripton);
-		}
+		newNote.save(null, {											/*---------  saves the new obj on Parse ----------*/
+			success: function(result){	
+			fetchFromParse(result);										
+		}, 
+			error: function(result, error){
+				alert("No dice hombre" + error.descripton);
+			}
+		});
 	});
-});
-// ////////////////////////////////////////
+}
 
 function putInSideBar (note){
 	var li = $('<li>'+note.get('title')+'</li>');					/*------ creates an li(called li), passes the arg(?)gets the data (in the title property) from Parse ---------*/
@@ -132,4 +133,5 @@ $(document).ready(function(){
 	});
 
 	fetchFromParse();
+	saveButton();
 });
