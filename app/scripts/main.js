@@ -22,17 +22,9 @@ var newNote = new noteConstructor();							/*----- makn a new obj --------*/
 
 
 
-notesArray.fetch({													/*------ fetches data, that has been updated on Parse -----*/
-	success: function(array){   
-		array.each(function(note){    								/*------  cycles thru the objs in the array, loox for Each obj in the array and... ------*/
-			putInSideBar(note);										/*---------   calls this function, which is defined below   -------*/
-		})
-	}
-});
-
 /////////////////////////////////////////// save button
 $('.saved-tasks').click(function(){ 								/*-------- this is a click event that, when you click the saved-tasks class(button) ------*/
-	newNote.set('title', $('#title').val());  						/* setting/putting the value(from the input that had the #title) onto parse in the title property on the parse server ----------*/
+	newNote.set('title', $('#title').val());  						/* it's like making an {}( var whatever = {}), set is putting the value from #title into a property key called title, inside the Model/Parse Object newNote*/
 	newNote.set('content', $('#content').val());  					/*----  ditto -----*/
 
 	$('.form').addClass('hidden');									/*--- adding the hidden class(which is just negative opacity) to the form---------*/
@@ -121,7 +113,7 @@ function putInDisplay(noteKinda){
 };
 
 $(document).ready(function(){
-	$('.new').click(function(){									/*---- dono why this is in the doc ready/global ----*/
+	$('.new').click(function(){									/*---- when you clik the 'make a new note' button, the .hidden is removed from .form ----*/
 		$('.form').removeClass('hidden');
 	});
 
