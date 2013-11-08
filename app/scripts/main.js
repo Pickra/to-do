@@ -20,7 +20,16 @@ var newNote = new noteConstructor();							/*----- makn a new obj --------*/
 			// END PARSE VARIABLES
 
 
-
+function fetchFromParse(){
+	notesArray.fetch({													/*------ fetches data, that has been updated on Parse, to the app -----*/
+		success: function(array){   
+			// clear sidebar
+			array.each(function(note){    								/*------  cycles thru the objs in the array, loox for Each obj in the array and... ------*/
+				putInSideBar(note);										/*---------   calls this function, which is defined below   -------*/
+			})
+		}
+	})
+}
 
 /////////////////////////////////////////// save button
 $('.saved-tasks').click(function(){ 								/*-------- this is a click event that, when you click the saved-tasks class(button) ------*/
@@ -30,15 +39,8 @@ $('.saved-tasks').click(function(){ 								/*-------- this is a click event tha
 	$('.form').addClass('hidden');									/*--- adding the hidden class(which is just negative opacity) to the form---------*/
 
 	newNote.save(null, {											/*---------  saves the new obj on Parse ----------*/
-		success: function(result){
-		notesArray.fetch({													/*------ fetches data, that has been updated on Parse -----*/
-			success: function(array){   
-				// clear sidebar
-				array.each(function(note){    								/*------  cycles thru the objs in the array, loox for Each obj in the array and... ------*/
-					putInSideBar(note);										/*---------   calls this function, which is defined below   -------*/
-				})
-			}
-		});
+		success: function(result){	
+		fetchFromParse(result);										
 	}, 
 		error: function(result, error){
 			alert("No dice hombre" + error.descripton);
@@ -58,7 +60,7 @@ function putInSideBar (note){
 };
 
 
-function getValueFromParse(note){
+function getValue(note){
 	$('#title').val(note.get('title'));  							/*---  gets the value from Parse's property and puts it in the #title*/
 	$('#content').val(note.get('content'));  						/*--- ditto ----*/
 };
@@ -66,13 +68,18 @@ function getValueFromParse(note){
 	
 
 function putInDisplay(noteKinda){
-	$('.output-wrap').html('')  									/*---- clear everything that's in this class -----*/
+	// $('.output-wrap').html('')  									/*---- clear everything that's in this class -----*/
+
 	var edit = $('<div class="edit btn btn-default new' + noteKinda.id + '">-Edit-</div>');  		/*---- make a button, get/assign the parse id (that Parse assigned to it when it is created?) to this div -----*/
 	var kill = $('<div class="delete btn btn-default new' + noteKinda.id + '">*Delete*</div>'); 	/*---- ditto -----*/
 	var h1 = $('<h1>' + noteKinda.get('title') + '</h1>');  	/*---- makes a h1 and puts the property value from the Parse title property into it -----*/
 	var p = $('<p>' + noteKinda.get('content') + '</p>'); 		/*---- ditto -----*/
 
 	$('.output-wrap').append(h1, p, edit, kill); 				/*---- append these above 4 creations to this class -----*/
+
+
+
+//  edit functionality needs to b broken up
 
 	$(edit).click(function(){									/*---- click event for the edit(var)button -----*/
 		$('.form').removeClass('hidden')						/*---- the same opacity thing from above -----*/
@@ -89,7 +96,7 @@ function putInDisplay(noteKinda){
 
 		noteKinda.save(null, {									/*---- save it... -----*/
 			success: function(result){
-			getValueFromParse(result);							/*---- (to parse?)  ----*/
+			getValue(result);							/*---- (to parse?)  ----*/
 			}, 
 			error: function(result, error){
 				alert("No dice hombre" + error.descripton);
@@ -111,6 +118,13 @@ function putInDisplay(noteKinda){
 		});
 	});
 };
+
+
+
+
+
+
+
 
 $(document).ready(function(){
 	$('.new').click(function(){									/*---- when you clik the 'make a new note' button, the .hidden is removed from .form ----*/
