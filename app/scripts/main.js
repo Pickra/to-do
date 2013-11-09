@@ -87,7 +87,7 @@ function putInDisplay(note){
 
 
 
-//  edit/delete/editSave functions need to b broken up into separate functions
+//  edit/delete/editSave functions need to b broken up into separate named functions
 
 
 	$(edit).click(function(){									/*---- click event for the edit(var)button -----*/
@@ -137,8 +137,8 @@ function putInDisplay(note){
 
 
 function getValue(note){
-	$('#title').val(note.get('title'));  							/*---  gets the value from Parse's property and puts it in the #title*/
-	$('#content').val(note.get('content'));  						/*--- ditto ----*/
+	$('#title').val(note.get('title'));  							/*---  gets the value from title property in notesArray and puts it in the #title*/
+	$('#content').val(note.get('content'));							/*--- ditto ----*/
 };
 
 

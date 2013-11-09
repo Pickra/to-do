@@ -37,7 +37,25 @@ This is my first attempt at a to-do app. I'm also using [Parse](https://www.pars
 	- it creates 2 other variable, an `h1` with the title value(the object from the notesArray) and a `p` with the content value (ditto)
 	- it appends all 4 variables/elements into the .output-wrap
 
+###### has an anonymous edit function
+when you click the edit variable(not .edit?, why?), an anonymous function happens(is called?)
+	
+- it unhides .form in .main
+- takes the value from title in notesArray and sticks it in the #title, in .form-group
+- ditto w/the content
+- makes a local variable called editSave, which is a button and it's appended inside .output-wrap
 
+###### when you click the editSave button an anonymous function happens(is called?)
+ - the value from #title in .form, is put into the notesArray
+ - ditto for content
+ - .form, in .main is hidden
+ - a save method is called, which puts stuff on parse by..
+ 	- calling the getValue() which gets the value from title property in notesArray and puts it in the #title
+ 	
+###### and there is also an anonymous delete function
+when you click the when you click the kill variable(not .kill?, why?), an anonymous function happens(is called?)
+- clears .output-wrap
+- calls a destroy method
 
 
 
@@ -53,6 +71,7 @@ This is my first attempt at a to-do app. I'm also using [Parse](https://www.pars
 - i declared the variables globally and referenced them inside putInDisplay(), no dice
 - inside the delete function, i replaced note(the arg from putInDisplay) with newNote (the obj being effected), nope
 - and this.newNote.destroy, nada
+###### how do you reference the newNote?
 	
 #### refresh needs to happen after edit, delete + editSave
 
