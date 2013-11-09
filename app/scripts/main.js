@@ -13,12 +13,17 @@ var objectArray = Parse.Collection.extend({							/*---------- makes a construct
 
 
 			// PARSE VARIABLES //
-
 var notesArray = new objectArray()  								/*------  a new local obj array ------*/
 
 var newNote = new noteConstructor();							/*----- makn a new obj --------*/
 			// END PARSE VARIABLES
 
+			// other variables //
+var edit;
+var kill;
+var h1;
+var p;
+			// end other variables
 
 function fetchAndOrDisplay(){
 	if (notesArray.length === 0){
@@ -58,7 +63,7 @@ function saveButton(){
 	});
 }
 
-function putInSideBar (note){
+function putInSideBar(note){
 	var li = $('<li>'+ note.get('title')+'</li>');					/*------ creates an li(called li), passes the arg(?)gets the data (in the title property) from Parse ---------*/
 
 	$('.notes').append(li);											/*---- put the li(append it) in the notes class, which is a ul in the column that has the sidebar class -----*/
@@ -68,42 +73,37 @@ function putInSideBar (note){
 	});
 };
 
-
-function getValue(note){
-	$('#title').val(note.get('title'));  							/*---  gets the value from Parse's property and puts it in the #title*/
-	$('#content').val(note.get('content'));  						/*--- ditto ----*/
-};
-
 	
 
-function putInDisplay(noteKinda){
+function putInDisplay(note){
 	$('.output-wrap').html('')  									/*---- clear everything that's in this class -----*/
-
-	var edit = $('<div class="edit btn btn-default new' + noteKinda.id + '">-Edit-</div>');  		/*---- make a button, get/assign the parse id (that Parse assigned to it when it is created?) to this div -----*/
-	var kill = $('<div class="delete btn btn-default new' + noteKinda.id + '">*Delete*</div>'); 	/*---- ditto -----*/
-	var h1 = $('<h1>' + noteKinda.get('title') + '</h1>');  	/*---- makes a h1 and puts the property value from the Parse title property into it -----*/
-	var p = $('<p>' + noteKinda.get('content') + '</p>'); 		/*---- ditto -----*/
+	edit = $('<div class="edit btn btn-default new' + note.id + '">-Edit-</div>');  		/*---- make a button, get/assign the parse id (that Parse assigned to it when it is created?) to this div -----*/
+	kill = $('<div class="kill btn btn-default new' + note.id + '">*Delete*</div>'); 	/*---- ditto -----*/
+	h1 = $('<h1>' + note.get('title') + '</h1>');  	/*---- makes a h1 and puts the property value from the Parse title property into it -----*/
+	p = $('<p>' + note.get('content') + '</p>'); 		/*---- ditto -----*/
 
 	$('.output-wrap').append(h1, p, edit, kill); 				/*---- append these above 4 creations to this class -----*/
 
 
 
-//  edit functionality needs to b broken up
+
+//  edit/delete/editSave functions need to b broken up into separate functions
+
 
 	$(edit).click(function(){									/*---- click event for the edit(var)button -----*/
 		$('.form').removeClass('hidden')						/*---- the same opacity thing from above -----*/
-		$('#title').val(noteKinda.get('title'));				/*---- get the property value from Parse and stick it in the #title(which is the .title input field) -----*/
-		$('#content').val(noteKinda.get('content')); 			/*---- yup -----*/
+		$('#title').val(note.get('title'));				/*---- get the property value from Parse and stick it in the #title(which is the .title input field) -----*/
+		$('#content').val(note.get('content')); 			/*---- yup -----*/
 
 		var editSave = $("<a href='#'><div class='editSave'>" + 'editSave' + "</div></a>");	/*---- makes yet another button.... -----*/
 		$('.output-wrap').append(editSave);						/*---- appends it to this class -----*/
 		
 		$('.editSave').click(function(){						/*---- here's it's click event -----*/
-		noteKinda.set('title', $('#title').val());				/*---- more of the same as above -----*/
-		noteKinda.set('content', $('#content').val());			/*---- ditto -----*/
+		note.set('title', $('#title').val());				/*---- more of the same as above -----*/
+		note.set('content', $('#content').val());			/*---- ditto -----*/
 		$('.form').addClass('hidden');							/*---- yup tup -----*/
 
-		noteKinda.save(null, {									/*---- save it... -----*/
+		note.save(null, {									/*---- save it... -----*/
 			success: function(result){
 			getValue(result);							/*---- (to parse?)  ----*/
 			}, 
@@ -114,25 +114,32 @@ function putInDisplay(noteKinda){
 		});
 	});
 
+
+
+
 	$(kill).click(function(){									/*----  click event ----*/
 	  	$('.output-wrap').addClass('hidden');					/*----  opacity yada ----*/
-		noteKinda.destroy({										/*----  delete the info ----*/
-		  success: function(noteKinda) {
+		note.destroy({										/*----  delete the info ----*/
+		  success: function(note) {
 		    													// The object was deleted from the Parse Cloud.
 		  },
 															    // The delete failed.
-		  error: function(noteKinda, error) {
+		  error: function(note, error) {
 															    // error is a Parse.Error with an error code and description.
 		  }
 		});
 
 	});
+
+
 };
 
 
 
-
-
+function getValue(note){
+	$('#title').val(note.get('title'));  							/*---  gets the value from Parse's property and puts it in the #title*/
+	$('#content').val(note.get('content'));  						/*--- ditto ----*/
+};
 
 
 
