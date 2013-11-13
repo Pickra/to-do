@@ -148,7 +148,7 @@ function getValue(note){
 
 $(document).ready(function(){
 	$('.new').click(function(){
-		$('.form').removeClass('hidden');
+		$('.main').removeClass('hidden');
 	});
 
 	fetchAndOrDisplay();

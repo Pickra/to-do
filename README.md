@@ -88,4 +88,4 @@ DONE!
 - make a new 1, use a favicon generator. 
 - delete their favicon in the app folder. 
 - stick new 1 in there.
-- grunt build
+- grunt (server, build would probably work too), but give Parse a minute to catch up
