@@ -81,3 +81,7 @@ when you click the when you click the kill variable(not .kill?, why?), an anonym
 - worlks with edit too
 
 #### i wana see the `notes` upon first loading the app
+
+
+
+delete their favicon in the app folder make a new 1 and stick it in there

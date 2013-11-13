@@ -89,22 +89,25 @@ function putInDisplay(note){
 		theEditor(note);
 	});
 
-
 	$(kill).click(function(){
+		theDelete(note);
+	});
+};
+
+
+function theDelete(note){
 	  	$('.output-wrap').addClass('hidden');
 		note.destroy({
-		  success: function(note){
+		  success: function(){
 		  	fetchAndOrDisplay();
+		  	putInSideBar();
 		  },
 
 		  error: function(note, error) {
 
 		  }
 		});
-	});
 };
-//  edit/delete/editSave functions need to b broken up into separate named functions
-
 
 		
 
