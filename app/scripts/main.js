@@ -110,7 +110,7 @@ function theDelete(note){
 		
 
 function theEditor(note){
-		$('.form').removeClass('hidden')
+		$('.under-main').removeClass('hidden')
 		$('#title').val(note.get('title'));
 		$('#content').val(note.get('content'));
 
@@ -120,7 +120,7 @@ function theEditor(note){
 		$('.editSave').click(function(){
 		note.set('title', $('#title').val());
 		note.set('content', $('#content').val());
-		$('.form').addClass('hidden');
+		$('.under-main').addClass('hidden');
 
 			note.save(null, {
 				success: function(result){
