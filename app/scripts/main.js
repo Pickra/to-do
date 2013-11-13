@@ -115,7 +115,8 @@ function theEditor(note){
 		$('#content').val(note.get('content'));
 
 		var editSave = $("<a href='#'><div class='editSave'>" + 'editSave' + "</div></a>");
-		$('.output-wrap').append(editSave);
+		$('.button-bar').remove();
+		$('.under-main').append(editSave);
 		
 		$('.editSave').click(function(){
 		note.set('title', $('#title').val());
