@@ -11,12 +11,7 @@ var objectArray = Parse.Collection.extend({
 			// END PARSE FUNCTIONS //
 
 
-
-			// PARSE VARIABLES //
 var notesArray = new objectArray()
-
-var newNote = new noteConstructor();
-			// END PARSE VARIABLES
 
 
 function fetchAndOrDisplay(){
@@ -36,9 +31,11 @@ function fetchAndOrDisplay(){
 		})
 	}
 };
+// ///////////////////////////
 
 function saveButton(){
 	$('.saved-tasks').click(function(){
+		var newNote = new noteConstructor();
 		newNote.set('title', $('#title').val());
 		newNote.set('content', $('#content').val());
 
@@ -46,7 +43,7 @@ function saveButton(){
  
 		newNote.save(null, {
 			success: function(result){	
-			notesArray.add(result);
+			notesArray.add(newNote);
 			fetchAndOrDisplay();
 			// console.log(newNote);
 		}, 
@@ -56,6 +53,7 @@ function saveButton(){
 		});
 	});
 }
+// ////////////////////////////
 
 function putInSideBar(note){
 	var li = $('<li>'+ note.get('title')+'</li>');
@@ -67,12 +65,12 @@ function putInSideBar(note){
 	});
 };
 
-			// other variables //
+			// putInDisplayVariables variables //
 var edit;
 var kill;
 var h1;
 var p;
-			// end other variables
+			// end putInDisplayVariables variables
 	
 
 function putInDisplay(note){

@@ -74,6 +74,7 @@ when you click the when you click the kill variable(not .kill?, why?), an anonym
 ###### how do you reference the newNote?
 	
 #### refresh needs to happen after edit, delete + editSave
+- DONE!!
 
 #### HIDE THE SAVE BUTTON UNTIL IT'S NEEDED
 - make a new note
@@ -84,4 +85,4 @@ when you click the when you click the kill variable(not .kill?, why?), an anonym
 
 
 
-delete their favicon in the app folder make a new 1 and stick it in there
+delete their favicon in the app folder make a new 1 and stick it in there and grunt build
