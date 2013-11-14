@@ -117,12 +117,16 @@ function theEditor(note){
 		$('#content').val(note.get('content'));
 
 		$('.button-bar').addClass('hidden');
-		$('.under-main').append(editSave);
+
+		if($('.editSave').length === 0){
+			$('.under-main').append(editSave);
+		}
 		
 		$('.editSave').click(function(){
 		note.set('title', $('#title').val());
 		note.set('content', $('#content').val());
 		$('.under-main').addClass('hidden');
+		$('.editSave').addClass('hidden');
 
 			note.save(null, {
 				success: function(result){
