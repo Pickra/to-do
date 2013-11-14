@@ -84,8 +84,11 @@ when you click the when you click the kill variable(not .kill?, why?), an anonym
 DONE!
 
 
-##### how change the icon in the left corner of the browser tab
+##### how to change the icon in the left corner of the browser tab
 - make a new 1, use a favicon generator. 
 - delete their favicon in the app folder. 
 - stick new 1 in there.
 - grunt (server, build would probably work too), but give Parse a minute to catch up
+
+#dumb mistake
+was instantiating a newNote in the global scope, instead of inside the SaveButton().

@@ -39,7 +39,7 @@ function saveButton(){
 		newNote.set('title', $('#title').val());
 		newNote.set('content', $('#content').val());
 
-		$('.form').addClass('hidden');
+		$('.under-main').addClass('hidden');
  
 		newNote.save(null, {
 			success: function(result){	
@@ -94,11 +94,11 @@ function putInDisplay(note){
 
 
 function theDelete(note){
-	  	$('.output-wrap').html('');
+	  	$('.under-main').html('');
 		note.destroy({
 		  success: function(){
 		  	fetchAndOrDisplay();
-		  	putInSideBar();
+		  	// putInSideBar();
 		  },
 
 		  error: function(note, error) {
@@ -110,12 +110,13 @@ function theDelete(note){
 		
 
 function theEditor(note){
+		var editSave = $("<a href='#'><div class='editSave'>" + 'editSave' + "</div></a>");
+		
 		$('.under-main').removeClass('hidden')
 		$('#title').val(note.get('title'));
 		$('#content').val(note.get('content'));
 
-		var editSave = $("<a href='#'><div class='editSave'>" + 'editSave' + "</div></a>");
-		$('.button-bar').remove();
+		$('.button-bar').addClass('hidden');
 		$('.under-main').append(editSave);
 		
 		$('.editSave').click(function(){
@@ -147,11 +148,16 @@ function getValue(note){
 
 
 
-$(document).ready(function(){
+function makeNote(){
 	$('.new').click(function(){
 		$('.under-main').removeClass('hidden');
+		// if('.button-bar').hasClass('hidden'){
+			$('.button-bar').removeClass('hidden');
+		// }
 	});
-
+}
+$(document).ready(function(){
+	makeNote();
 	fetchAndOrDisplay();
 	saveButton();
 });
