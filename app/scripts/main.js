@@ -98,7 +98,7 @@ function theDelete(note){
 		note.destroy({
 		  success: function(){
 		  	fetchAndOrDisplay();
-		  	// putInSideBar();
+		  	$('.output-wrap').html('');
 		  },
 
 		  error: function(note, error) {
@@ -127,6 +127,7 @@ function theEditor(note){
 		note.set('content', $('#content').val());
 		$('.under-main').addClass('hidden');
 		$('.editSave').addClass('hidden');
+		$('.output-wrap').html('');
 
 			note.save(null, {
 				success: function(result){
