@@ -101,6 +101,66 @@ case, TestObject.*/
 
 
 
+function putInDisplay(note){
+	$('.output-wrap').html('')
+	edit = $('<div class="edit btn btn-default new' + note.id + '">-Edit-</div>');
+	kill = $('<div class="kill btn btn-default new' + note.id + '">*Delete*</div>');
+	h1 = $('<h1>' + note.get('title') + '</h1>');
+	p = $('<p>' + note.get('content') + '</p>');
+
+	$('.output-wrap').append(h1, p, edit, kill);
+
+
+	$(edit).click(function(){
+		theEditor(note);
+	});
+
+	$(kill).click(function(){
+		theDelete(note);
+	});
+};
+
+
+function theDelete(note){
+	  	$('.output-wrap').addClass('hidden');
+		note.destroy({
+		  success: function(){
+		  	fetchAndOrDisplay();
+		  	putInSideBar();
+		  },
+
+		  error: function(note, error) {
+
+		  }
+		});
+};
+
+		
+
+function theEditor(note){
+		$('.form').removeClass('hidden')
+		$('#title').val(note.get('title'));
+		$('#content').val(note.get('content'));
+
+		var editSave = $("<a href='#'><div class='editSave'>" + 'editSave' + "</div></a>");
+		$('.output-wrap').append(editSave);
+		
+		$('.editSave').click(function(){
+		note.set('title', $('#title').val());
+		note.set('content', $('#content').val());
+		$('.form').addClass('hidden');
+
+			note.save(null, {
+				success: function(result){
+				getValue(result);
+				fetchAndOrDisplay();
+				}, 
+				error: function(result, error){
+					alert("No dice hombre" + error.descripton);
+				}
+			});
+		});
+}
 
 
 
