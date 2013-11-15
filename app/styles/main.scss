@@ -10,7 +10,7 @@ body {
     color: red;
 }
 
-.container {
+.not-container {
     width: 900px;
     margin: 120px auto;
 }
@@ -28,18 +28,6 @@ body {
     border: 1px solid rgb(150, 122, 122);
 }
 
-.sidebar {
-    /*background-color: rgba(46, 8, 8, 0.3);*/
-}
-
-.main {
-    /*background-color: rgba(100, 11, 50, 0.5);*/
-    position: relative;
-}
-
-.display {
-    /*background-color: rgba(46, 8, 8, 0.6);*/
-}
 
 /* forms */
 
@@ -92,4 +80,23 @@ body {
 }
 
 
-/* trash  */
+/*trash  
+
+
+.sidebar {
+    background-color: rgba(46, 8, 8, 0.3);
+}
+
+.main {
+    background-color: rgba(100, 11, 50, 0.5);
+    position: relative;
+}
+
+.display {
+    background-color: rgba(46, 8, 8, 0.6);
+}
+
+
+
+
+*/
