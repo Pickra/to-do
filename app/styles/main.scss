@@ -2,36 +2,38 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 
-// MIXINS
-
-@mixin column($width, $height, $color, $bg-color, $margin){
-    width: $width;
-    height: $height;
-    color: $color;
-    background-color: $bg-color;
-    margin: $margin;
-    display: inline-block;
-}
-
 
 body {
-    background: url("../images/dragon.jpg") no-repeat center center fixed;
-    background-size: cover;
+    background-image: url('../images/dragon.jpg');
+    background-repeat: no-repeat;
     color: red;
 }
 
 .container {
-    // margin: 260px 0 0 80px;
-    display: inline-block;
-    margin: 0 auto;
+    margin: 260px 0 0 80px;
 }
 
 /*columns*/
 
-.column {
-    @include column(300px, 300px, 'red', rgba(100, 11, 50, 0.5), 0px 0px 0px 0px);
+
+.sidebar, .main, .display {
+    vertical-align: top;
+    display: inline-block;
+    min-height: 300px;
 }
 
+.sidebar {
+    background-color: rgba(46, 8, 8, 0.3);
+}
+
+.main {
+    background-color: rgba(100, 11, 50, 0.5);
+    position: relative;
+}
+
+.display {
+    background-color: rgba(46, 8, 8, 0.6);
+}
 
 /* forms */
 
@@ -76,6 +78,7 @@ body {
 
 
 
+
 /*   utility   */
 
 .hidden {
@@ -83,29 +86,4 @@ body {
 }
 
 
-/*          trash
-
-.visible {
-    visibility: visible;
-}
-
-
-.sidebar {
-    background-color: rgba(46, 8, 8, 0.3);
-}
-
-.main {
-    background-color: rgba(100, 11, 50, 0.5);
-    position: relative;
-}
-
-.display {
-    background-color: rgba(46, 8, 8, 0.6);
-}
-
-.sidebar, .main, .display {
-    vertical-align: top;
-    display: inline-block;
-    // min-height: 300px;
-}
-  */
+/* trash  */
