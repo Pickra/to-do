@@ -2,17 +2,17 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 
-$column-bg-color: rgba(46, 8, 8, 0.3);
+$column-bg-color: rgba(46, 8, 8, 0.6);
 
 body {
-    background-image: url('../images/dragon.jpg');
-    background-repeat: no-repeat;
+    background: url('../images/dragon.jpg') no-repeat center center fixed;
+    background-size: cover;
     color: red;
 }
 
-.not-container {
-    margin: 120px 130px;
-    display: inline-block;
+.container {
+    width: 900px;
+    margin: 120px auto;
 }
 
 /*columns*/
@@ -22,9 +22,10 @@ body {
     vertical-align: top;
     display: inline-block;
     min-height: 300px;
-    min-width: 300px;
-    background: $column-bg-color;
-    margin: 0 10px;
+    width: 30%;
+    background: rgba(46, 8, 8, 0.6);
+    margin: 0 1%;
+    border: 1px solid rgb(150, 122, 122);
 }
 
 .sidebar {
