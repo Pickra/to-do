@@ -78,7 +78,7 @@ when you click the when you click the kill variable(not .kill?, why?), an anonym
 #### HIDE THE SAVE BUTTON UNTIL IT'S NEEDED
 
 #### make only 1 save button
-- works with edit too
+- made 2 buttons, but the user only sees 1 at a time, that look like the same button
 
 #### i wana see the `notes` upon first loading the app
 DONE!
