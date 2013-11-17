@@ -75,8 +75,8 @@ var p;
 
 function putInDisplay(note){
 	$('.output-wrap').html('')
-	edit = $('<div class="edit btn btn-default new' + note.id + '">-Edit-</div>');
-	kill = $('<div class="kill btn btn-default new' + note.id + '">*Delete*</div>');
+	edit = $('<div class="edit btn btn-default new' + note.id + '">Edit</div>');
+	kill = $('<div class="kill btn btn-default new' + note.id + '">Delete</div>');
 	h1 = $('<h1>' + note.get('title') + '</h1>');
 	p = $('<p>' + note.get('content') + '</p>');
 
@@ -107,7 +107,6 @@ function theDelete(note){
 		});
 };
 
-		
 
 function theEditor(note){
 		var editSave = $("<a href='#'><div class='editSave'>" + 'editSave' + "</div></a>");
@@ -142,10 +141,6 @@ function theEditor(note){
 }
 
 
-
-
-
-
 function getValue(note){
 	$('#title').val(note.get('title'));
 	$('#content').val(note.get('content'));
@@ -156,7 +151,8 @@ function getValue(note){
 function makeNote(){
 	$('.new').click(function(){
 		$('.under-main').removeClass('hidden');
-			$('.saved-tasks').removeClass('hidden');
+		$('.saved-tasks').removeClass('hidden');
+		$('.form-control').val('');
 	});
 }
 $(document).ready(function(){
