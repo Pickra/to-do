@@ -92,7 +92,6 @@ function putInDisplay(note){
 
 
 function theDelete(note){
-	  	// $('.under-main').html('');
 		note.destroy({
 		  success: function(){
 		  	fetchAndOrDisplay();
@@ -107,7 +106,7 @@ function theDelete(note){
 
 
 function theEditor(note){
-		var editSave = $("<div class='btn-default editSave'>" + 'Save' + "</div>");
+		var editSave = $("<div class='btn-default editSave' style='display: inline-block;'>" + 'Save' + "</div>");
 		
 		$('.under-main').removeClass('hidden')
 		$('#title').val(note.get('title'));
