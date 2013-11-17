@@ -22,12 +22,24 @@ body {
     vertical-align: top;
     display: inline-block;
     min-height: 300px;
-    width: 30%;
-    background: rgba(46, 8, 8, 0.6);
-    margin: 0 1%;
-    border: 1px solid rgb(150, 122, 122);
+    width: 300px;
+    background: rgba(61, 0, 0, 0.47);
+    /*border: 1px solid #705F5F;*/
+    box-shadow: 0px 0px 30px 2px rgba(194, 109, 17, 0.53);
+    border-radius: 20px;
 }
 
+.sidebar {
+    margin: 150px 0px 0px 130px;
+}
+
+.display {
+    margin:400px 20px 0 20px;
+}
+
+.main {
+    margin-top: 150px;
+}
 
 /* forms */
 
@@ -39,22 +51,17 @@ body {
 
 /*buttons*/
 
-.btn-default {
+button {
   background-color: rgba(46, 8, 8, 0.3);
-  color: rgba(230, 6, 6, 0.9)
+  color: rgba(230, 6, 6, 0.9);
+  margin: 5% 25%;
+  border: 1px solid rgba(194, 109, 17, 0.53);
+  padding: 10px;
+  border-radius: 10px;
 } 
 
-.btn {
-    margin: 10px;
-}
-
-.new {
-  margin: 5% 0 0 25%;
-
-}
-
-.save {
-    margin: 5% 0 0 0;    
+.btn-default:hover {
+    background-color: red;
 }
 
 .action {
@@ -83,18 +90,6 @@ body {
 /*trash  
 
 
-.sidebar {
-    background-color: rgba(46, 8, 8, 0.3);
-}
-
-.main {
-    background-color: rgba(100, 11, 50, 0.5);
-    position: relative;
-}
-
-.display {
-    background-color: rgba(46, 8, 8, 0.6);
-}
 
 
 
