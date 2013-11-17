@@ -87,10 +87,13 @@ body {
 
 .btn-default:hover {
     background-color: #3D1515;
+    color: red;
 }
 
 .btn-default:focus {
     outline: none;
+    background-color: #3D1515;
+    color: red;
 }
 
 .btn-default:active {
