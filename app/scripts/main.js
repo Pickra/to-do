@@ -123,6 +123,7 @@ function theEditor(note){
 		note.set('title', $('#title').val());
 		note.set('content', $('#content').val());
 		$('.under-main').addClass('hidden');
+		$('.editSave').remove();
 		$('.output-wrap').html('');
 
 			note.save(null, {
