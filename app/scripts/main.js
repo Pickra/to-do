@@ -94,7 +94,7 @@ function putInDisplay(note){
 
 
 function theDelete(note){
-	  	$('.under-main').html('');
+	  	// $('.under-main').html('');
 		note.destroy({
 		  success: function(){
 		  	fetchAndOrDisplay();
