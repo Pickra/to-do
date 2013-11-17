@@ -31,7 +31,6 @@ function fetchAndOrDisplay(){
 		})
 	}
 };
-// ///////////////////////////
 
 function saveButton(){
 	$('.saved-tasks').click(function(){
@@ -53,7 +52,6 @@ function saveButton(){
 		});
 	});
 }
-// ////////////////////////////
 
 function putInSideBar(note){
 	var li = $('<li>'+ note.get('title')+'</li>');
@@ -109,7 +107,7 @@ function theDelete(note){
 
 
 function theEditor(note){
-		var editSave = $("<a href='#'><div class='editSave'>" + 'editSave' + "</div></a>");
+		var editSave = $("<div class='btn-default editSave'>" + 'Save' + "</div>");
 		
 		$('.under-main').removeClass('hidden')
 		$('#title').val(note.get('title'));
@@ -125,7 +123,6 @@ function theEditor(note){
 		note.set('title', $('#title').val());
 		note.set('content', $('#content').val());
 		$('.under-main').addClass('hidden');
-		$('.editSave').addClass('hidden');
 		$('.output-wrap').html('');
 
 			note.save(null, {
