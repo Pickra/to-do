@@ -50,16 +50,16 @@ when you click the edit variable(not .edit?, why?), an anonymous function happen
  	- calling the getValue() which gets the value from title property in notesArray and puts it in the #title
  	
 ###### and there is also an anonymous delete function
-when you click the when you click the kill variable(not .kill?, why?), an anonymous function happens(is called?)
+when you click the kill variable(not .kill?, why?), an anonymous function happens(is called?)
 - clears .output-wrap
 - calls a destroy method
 
+###### the above explanation is no longer correct.
 
 
 
 
-
-
+#questions 
 #### why, when i brake up the edit and delete functions from the putInDisplay(),  don't they work?
 - tried making each one its own functions and matching the arg(notes)
 	- error = undefined doesn't have a get function/destroy function
@@ -73,10 +73,10 @@ when you click the when you click the kill variable(not .kill?, why?), an anonym
 			ANSWER = had to call each function, delete + edit, inside its own click event. and the args had to match.
 	
 #### refresh needs to happen after edit, delete + editSave
-- DONE!!
+DONE!!
 
 #### HIDE THE SAVE BUTTON UNTIL IT'S NEEDED
-
+DONE!
 #### make only 1 save button
 - made 2 buttons, but the user only sees 1 at a time, that look like the same button
 
@@ -92,3 +92,6 @@ DONE!
 
 #dumb mistake
 was instantiating a newNote in the global scope, instead of inside the SaveButton().
+
+# I hate bootstrap
+made this with bootstrap. refactoring is proving to be very difficult, though I knew that was going to happen, it's also breaking my code; which I was not expecting. or i thought it was working and now upon further investigation know that it's not.
