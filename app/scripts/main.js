@@ -116,7 +116,7 @@ function theEditor(note){
 		$('#title').val(note.get('title'));
 		$('#content').val(note.get('content'));
 
-		$('.button-bar').addClass('hidden');
+		$('.saved-tasks').addClass('hidden');
 
 		if($('.editSave').length === 0){
 			$('.under-main').append(editSave);
@@ -156,9 +156,7 @@ function getValue(note){
 function makeNote(){
 	$('.new').click(function(){
 		$('.under-main').removeClass('hidden');
-		// if('.button-bar').hasClass('hidden'){
-			$('.button-bar').removeClass('hidden');
-		// }
+			$('.saved-tasks').removeClass('hidden');
 	});
 }
 $(document).ready(function(){
