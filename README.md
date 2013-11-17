@@ -94,4 +94,4 @@ DONE!
 was instantiating a newNote in the global scope, instead of inside the SaveButton().
 
 # I hate bootstrap
-made this with bootstrap. refactoring is proving to be very difficult, though I knew that was going to happen, it's also breaking my code; which I was not expecting. or i thought it was working and now upon further investigation know that it's not.
+made this with bootstrap. refactoring is proving to be very difficult, though I knew that was going to happen, it's also breaking my code; which I was not expecting. or i thought it was working and now, upon further investigation, know that it's not.

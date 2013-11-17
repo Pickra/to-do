@@ -96,6 +96,7 @@ function theDelete(note){
 		  success: function(){
 		  	fetchAndOrDisplay();
 		  	$('.output-wrap').html('');
+		  	$('.under-main').addClass('hidden');
 		  },
 
 		  error: function(note, error) {
