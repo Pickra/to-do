@@ -39,10 +39,10 @@ body {
 
 
 .display {
-    margin:400px 0px 0 0px;
+    margin-top: 200px;
 
     @media (max-width: 768px){
-        margin: 20px 0;
+        margin-top: 20px;
     }
 }
 
@@ -71,6 +71,11 @@ body {
     background-color: rgba(0, 0, 0, 0.3);
     color: red;
 }
+
+.col-lg-12 {
+    padding: 0;
+}
+
 
 
 /*buttons*/
