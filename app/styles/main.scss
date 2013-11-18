@@ -59,14 +59,17 @@ body {
 
 .form-control {
     background-color: rgba(0, 0, 0, 0.3);
-    color: red;
+    color: #D5AB2F;
+    border: 1px solid #D5AB2F;
 }
 
 .col-lg-12 {
     padding: 0;
 }
 
-
+::-webkit-input-placeholder {
+   color: #D5AB2F;
+}
 
 /*buttons*/
 
@@ -77,7 +80,7 @@ body {
   border: 0px solid rgba(194, 109, 17, 0.53);
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0px 2px 0px 0px rgba(194, 109, 17, 0.53);
+  box-shadow: 0px 2px 0px 0px rgba(194, 180, 17, 0.53);
   font-size: 20px;
 } 
 
