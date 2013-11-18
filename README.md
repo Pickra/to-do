@@ -95,11 +95,3 @@ was instantiating a newNote in the global scope, instead of inside the SaveButto
 
 # I hate bootstrap
 made this with bootstrap. refactoring is proving to be very difficult, though I knew that was going to happen, it's also breaking my code; which I was not expecting. or i thought it was working and now, upon further investigation, know that it's not.
-
-#stylin
-- Make the input field and text box span the width of the containing div.
-- small thing, but I'd add cursor:pointer to the notes
-so you recognize they are clickable
-- id lose the text shadow on the red font. i would make the second box taller so it doesnt need to scroll with the placeholder text
-Id left align the notes
-- get the second box up
