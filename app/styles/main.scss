@@ -12,8 +12,7 @@ body {
 }
 
 .containerer {
-    width: 762px;
-    margin: 120px auto;
+    margin-top: 250px ;
     text-align: center;
 
     @media (max-width: 768px){
@@ -33,14 +32,14 @@ body {
     background: $column-bg-color;
     box-shadow: 0px 0px 10px 0px #D5AB2F;
     border-radius: 30px;
+    margin-right: 20px;
 }
 
 
 .display {
-    margin-top: 150px;
 
     @media (max-width: 768px){
-        margin-top: 20px;
+        margin: 20px 0;
     }
 }
 
