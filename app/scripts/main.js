@@ -73,8 +73,8 @@ var p;
 
 function putInDisplay(note){
 	$('.output-wrap').html('')
-	edit = $('<div class="edit btn btn-default new' + note.id + '">Edit</div>');
-	kill = $('<div class="kill btn btn-default new' + note.id + '">Delete</div>');
+	edit = $('<div class="edit btn-default new' + note.id + '">Edit</div>');
+	kill = $('<div class="kill btn-default new' + note.id + '">Delete</div>');
 	h1 = $('<h1>' + note.get('title') + '</h1>');
 	p = $('<p>' + note.get('content') + '</p>');
 
