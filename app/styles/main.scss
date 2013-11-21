@@ -63,7 +63,12 @@ body {
 .form-control {
     background-color: rgba(0, 0, 0, 0.3);
     color: #D5AB2F;
-    border: 1px solid #D5AB2F;
+    border: 1px solid #221111;
+}
+
+.form-horizontal .form-group {
+margin-left: 0;
+margin-right: 0;
 }
 
 .col-lg-12 {

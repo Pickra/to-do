@@ -145,7 +145,6 @@ function getValue(note){
 };
 
 
-
 function makeNote(){
 	$('.new').click(function(){
 		$('.under-main').removeClass('hidden');
@@ -153,8 +152,16 @@ function makeNote(){
 		$('.form-control').val('');
 	});
 }
+
 $(document).ready(function(){
 	makeNote();
 	fetchAndOrDisplay();
 	saveButton();
+	cancelButton();
 });
+
+function cancelButton(){
+	$('.cancel').click(function(){
+		$('.under-main').addClass('hidden');
+	})
+}
