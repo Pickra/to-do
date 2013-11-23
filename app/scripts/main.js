@@ -53,6 +53,13 @@ function saveButton(){
 	});
 }
 
+function cancelButton(){
+	$('.cancel').click(function(){
+		$('.under-main').addClass('hidden');
+		console.log('cancel');
+	})
+}
+
 function putInSideBar(note){
 	var li = $('<li>'+ note.get('title')+'</li>');
 
@@ -159,9 +166,3 @@ $(document).ready(function(){
 	saveButton();
 	cancelButton();
 });
-
-function cancelButton(){
-	$('.cancel').click(function(){
-		$('.under-main').addClass('hidden');
-	})
-}
