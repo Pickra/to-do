@@ -75,6 +75,7 @@ var edit;
 var kill;
 var h1;
 var p;
+var cancel;
 			// end putInDisplayVariables variables
 	
 
@@ -84,8 +85,9 @@ function putInDisplay(note){
 	kill = $('<div class="kill btn-default new' + note.id + '">Delete</div>');
 	h1 = $('<h1>' + note.get('title') + '</h1>');
 	p = $('<p>' + note.get('content') + '</p>');
+	cancel = $('<div class="cancel btn-default">Cancel</div>');
 
-	$('.output-wrap').append(h1, p, edit, kill);
+	$('.output-wrap').append(h1, p, edit, kill, cancel);
 
 
 	$(edit).click(function(){
@@ -95,6 +97,11 @@ function putInDisplay(note){
 	$(kill).click(function(){
 		theDelete(note);
 	});
+
+	$(cancel).click(function(){
+		$('.output-wrap').html('');
+		console.log('here?')
+	})
 };
 
 
