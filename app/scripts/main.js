@@ -71,21 +71,21 @@ function putInSideBar(note){
 };
 
 			// putInDisplayVariables variables //
-var edit;
-var kill;
-var h1;
-var p;
-var cancel;
+// var edit;
+// var kill;
+// var h1;
+// var p;
+// var cancel;
 			// end putInDisplayVariables variables
 	
 
 function putInDisplay(note){
 	$('.output-wrap').html('')
-	edit = $('<div class="edit btn-default new' + note.id + '">Edit</div>');
-	kill = $('<div class="kill btn-default new' + note.id + '">Delete</div>');
-	h1 = $('<h1>' + note.get('title') + '</h1>');
-	p = $('<p>' + note.get('content') + '</p>');
-	cancel = $('<div class="cancel btn-default">Cancel</div>');
+	var edit = $('<div class="edit btn-default new' + note.id + '">Edit</div>');
+	var kill = $('<div class="kill btn-default new' + note.id + '">Delete</div>');
+	var h1 = $('<h1>' + note.get('title') + '</h1>');
+	var p = $('<p>' + note.get('content') + '</p>');
+	var cancel = $('<div class="cancel btn-default">Cancel</div>');
 
 	$('.output-wrap').append(h1, p, edit, kill, cancel);
 
@@ -100,7 +100,6 @@ function putInDisplay(note){
 
 	$(cancel).click(function(){
 		$('.output-wrap').html('');
-		console.log('here?')
 	})
 };
 

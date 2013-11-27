@@ -38,12 +38,16 @@ body {
 
 
 .display {
-
     @media (max-width: 768px){
         margin: 20px 0;
     }
 }
 
+.main {
+    @media (max-width: 768px){
+        margin: 20px 0;
+    }
+}
 
 .notes {
     list-style-type: none;
