@@ -100,6 +100,7 @@ function putInDisplay(note){
 
 	$(cancel).click(function(){
 		$('.output-wrap').html('');
+		$('.under-main').addClass('hidden');
 	})
 };
 
